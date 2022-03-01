@@ -32,7 +32,6 @@
         height: 100vh;
         /* min-width: 400px; */
         overflow-x: hidden;
-        
       }
 
       .container {
@@ -42,7 +41,7 @@
         justify-content: center;
         /* height: 320px; */
         height: 800px;
-        
+
         width: 320px;
       }
 
@@ -63,7 +62,8 @@
       }
 
       h2,
-      th, td {
+      th,
+      td {
         font-size: var(--md);
         text-align: center;
       }
@@ -97,6 +97,7 @@
         color: var(--dark);
         font-weight: bold;
         padding: 0;
+        
       }
 
       .input-container button:hover {
@@ -107,6 +108,16 @@
       .table-section {
         display: flex;
         flex-direction: column;
+      }
+
+      .button-container {
+        display: flex;
+        align-items: center;
+        width:300px;
+        justify-content: center;
+        gap: 8px;
+
+
       }
     </style>
   </head>
@@ -119,7 +130,10 @@
             <label for="nameL">Nombre:</label>
             <input type="text" name="nameL" id="nameL" />
           </form>
-          <button id="buttonSend" onclick="execute()">Enviar</button>
+          <section class="button-container">
+            <button id="buttonSend" onclick="execute()">Enviar</button>
+            <button id="buttonDelete" onclick="">Borrar</button>
+          </section>
         </div>
         <section class="table-section">
           <h2>Elementos en lista</h2>
