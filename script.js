@@ -83,6 +83,32 @@ class linkedList {
       node = node.next;
     }
   }
+
+  removeElement(element) {
+    var current = this.head;
+    var prev = null;
+
+
+    while (current != null) {
+        // comparing element with current
+        // element if found then remove the
+        // and return true
+        if (current.data === element) {
+            console.log(current.data)
+
+            if (prev == null) {
+                this.head = current.next;
+            } else {
+                prev.next = current.next;
+            }
+            this.size--;
+            return current.element;
+        }
+        prev = current;
+        current = current.next;
+    }
+    return -1;
+}
 }
 
 const list = new linkedList();
@@ -94,43 +120,34 @@ let count = 1;
 function execute() {
   list.appendLast(formAdd.elements["nameL"].value);
   formAdd.elements["nameL"].value = "";
-  console.log("Agregado a lista!!" + list.size());
   table.innerHTML += `
     <tr>
-        <td id = "${count}" >${count}</td>
-        <td onclick = "print()">${list.getLast().data}</td>
+        <td >${count}</td>
+        <td id = "${list.getLast().data}" indexTable = "${count}"  onclick = "returnDataNode(this)">${list.getLast().data}</td>
     <tr>    
     `;
   count++;
-  console.log(list.getLast().data);
+  
   
 }
 
-function print(){
-    console.log("pérra flaco");
+function returnDataNode(data){
+    console.log(data)
+    let dataInside = data.id;
+
+    console.log("datos -> " + dataInside);
+   
+
+   
+
+    list.showlist();      
+
 }
 
-
-function noc() {
-  table.innerHTML += `
-       <tr>
-       <td>1</td>
-        <td>Flaco</td>
-       </tr>
-       <tr>
-       <td>1</td>
-        <td>Flaco</td>
-       </tr>
-       <tr>
-       <td>1</td>
-        <td>Flaco</td>
-       </tr>
-       <tr>
-       <td>1</td>
-        <td>Flaco</td>
-       </tr>
-       
-        `;
+function deleteD(data){
+    let index = parseInt(data.indexTable);
+    console.log("IndexTable --> " + index);
+    console.log("-----------");
+    list.removeElement(dataInside);
 }
 
-//td id auto incremente;
