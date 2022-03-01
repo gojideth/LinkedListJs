@@ -132,13 +132,10 @@ function execute() {
 }
 
 function returnDataNode(data){
-    console.log(data)
-    let dataInside = data.id;
-
-    console.log("datos -> " + dataInside);
    
-
-   
+    let dataInside = data.id;    
+    list.removeElement(dataInside);
+    console.log("Removido\n -------");  
 
     list.showlist();      
 
@@ -148,6 +145,6 @@ function deleteD(data){
     let index = parseInt(data.indexTable);
     console.log("IndexTable --> " + index);
     console.log("-----------");
-    list.removeElement(dataInside);
+   
 }
 
