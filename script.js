@@ -88,27 +88,26 @@ class linkedList {
     var current = this.head;
     var prev = null;
 
-
     while (current != null) {
-        // comparing element with current
-        // element if found then remove the
-        // and return true
-        if (current.data === element) {
-            console.log(current.data)
+      // comparing element with current
+      // element if found then remove the
+      // and return true
+      if (current.data === element) {
+        console.log(current.data);
 
-            if (prev == null) {
-                this.head = current.next;
-            } else {
-                prev.next = current.next;
-            }
-            this.size--;
-            return current.element;
+        if (prev == null) {
+          this.head = current.next;
+        } else {
+          prev.next = current.next;
         }
-        prev = current;
-        current = current.next;
+        this.size--;
+        return current.element;
+      }
+      prev = current;
+      current = current.next;
     }
     return -1;
-}
+  }
 }
 
 const list = new linkedList();
@@ -123,28 +122,53 @@ function execute() {
   table.innerHTML += `
     <tr>
         <td >${count}</td>
-        <td id = "${list.getLast().data}" indexTable = "${count}"  onclick = "returnDataNode(this)">${list.getLast().data}</td>
+        <td id = "${count}-${
+    list.getLast().data
+  }" indexTable = "${count}"  onclick = "returnDataNode(this)">${
+    list.getLast().data
+  }</td>
     <tr>    
     `;
   count++;
+}
+
+function returnDataNode(data) {
+  // console.log(data);
+  let dataInside = String(data.id);
+  console.log("--> " + dataInside);
+  let indexTeibel = dataInside.split("-");
+
+  // console.log(indexTeibel);
+
+  deleteRowTable(indexTeibel[0]);
+  list.removeElement(indexTeibel[1]);
+
+  // const deleteRowConst = (index) => {
+  //   document.getElementById("bodyTable").deleteRow(parseInt(index));
+  // };
+  // deleteRowConst(indexTeibel[0]);
+  // console.log("Removido\n -------");
   
-  
+  // console.group("Debug");
+  console.log("-----------------------------------");
+  list.showlist();
 }
 
-function returnDataNode(data){
-   
-    let dataInside = data.id;    
-    list.removeElement(dataInside);
-    console.log("Removido\n -------");  
+function deleteRowTable(index){
+  let dataInside = String(index.id);
 
-    list.showlist();      
+  let indexTeibel = dataInside.split("-");
+
+  document.getElementById("bodyTable").deleteRow(parseInt(indexTeibel[0]));
 
 }
 
-function deleteD(data){
-    let index = parseInt(data.indexTable);
-    console.log("IndexTable --> " + index);
-    console.log("-----------");
-   
+function deleteD(data) {
+  let index = parseInt(data.indexTable);
+  console.log("IndexTable --> " + index);
+  console.log("-----------");
 }
-
+const remove = (id) => {
+  // console.log(id);
+  id.innerHTML = ''
+}

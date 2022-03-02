@@ -41,8 +41,9 @@
         justify-content: center;
         /* height: 320px; */
         height: 800px;
-
+        box-sizing: border-box;
         width: 320px;
+        
       }
 
       .input-container {
@@ -118,6 +119,12 @@
         gap: 8px;
 
 
+      }
+
+      @media (max-width: 320px) {
+        .container{
+          width: 200px;
+        }
       }
     </style>
   </head>
